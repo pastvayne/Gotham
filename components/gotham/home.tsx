@@ -37,25 +37,50 @@ export function Problem() {
   );
 }
 
-export function Ecosystem() {
+const motions = [
+  { name: "Shield", text: "Assets enter the pool from a public wallet." },
+  { name: "Transfer", text: "Value moves inside the pool, without publishing the link." },
+  { name: "Unshield", text: "Value returns to a public address." },
+];
+
+export function HowItWorks() {
   return (
-    <section id="ecosystem" className="chapter section-anchor">
+    <section id="works" className="chapter section-anchor">
       <div className="sheet">
-        <p className="chapter-index">03</p>
-        <h2 className="chapter-title">The pool is not the token.</h2>
+        <p className="chapter-index">02</p>
+        <h2 className="chapter-title">Shield. Transfer. Return.</h2>
+        <ol className="sequence steps">
+          {motions.map((step) => (
+            <li key={step.name}>
+              <h3>{step.name}</h3>
+              <p>{step.text}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
+export function Infrastructure() {
+  return (
+    <section id="infrastructure" className="chapter section-anchor">
+      <div className="sheet">
+        <p className="chapter-index">04</p>
+        <h2 className="chapter-title">Privacy infrastructure for Elysium.</h2>
         <div className="pair">
           <div>
-            <p className="pair-name">Protocol</p>
-            <p>A shielded pool in design. Value would enter, move inside, and return to a public address.</p>
+            <p className="pair-name">The pool</p>
+            <p>A shielded pool. Notes and proofs carry a payment that the ledger does not publish.</p>
           </div>
           <div>
-            <p className="pair-name">$GOTHAM</p>
-            <p>A proposed token with no supply. Holding it would not make a payment private.</p>
+            <p className="pair-name">Elysium</p>
+            <p>Designed for Elysium, where a public payment otherwise names both sides.</p>
           </div>
         </div>
         <p className="chapter-more">
           <Link className="text-link" href="/docs/architecture">
-            Architecture and limits
+            Architecture
           </Link>
         </p>
       </div>
@@ -67,8 +92,8 @@ export function Roadmap() {
   return (
     <section id="roadmap" className="chapter section-anchor">
       <div className="sheet">
-        <p className="chapter-index">04</p>
-        <h2 className="chapter-title">Reviewed before it is real.</h2>
+        <p className="chapter-index">05</p>
+        <h2 className="chapter-title">From a public design to a reviewed system.</h2>
         <ol className="sequence">
           {phases.map((phase) => (
             <li key={phase.name} className={phase.current ? "is-now" : undefined}>
@@ -77,10 +102,6 @@ export function Roadmap() {
             </li>
           ))}
         </ol>
-        <p className="sequence-note">
-          The preview cannot move funds. Claims stay unproven until the system exists and is reviewed.{" "}
-          <Link href="/docs/threat-model">Threat model</Link>
-        </p>
       </div>
     </section>
   );

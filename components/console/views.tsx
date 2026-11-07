@@ -3,16 +3,14 @@
 import Link from "next/link";
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { isAddress } from "viem";
-import { protocolStatus } from "@gotham/sdk";
 import { formatAmount, parseAmount } from "@/lib/amount";
 import { elysiumDocs, elysiumMainnet, elysiumTestnet, testnetTokens } from "@/lib/elysium";
 import { useWallet } from "@/components/console/wallet";
 
 const assets = [
-  { id: "USDC", label: "USDC", kind: "erc20" as const, decimalsHint: "Read from the token when a wallet is on testnet." },
-  { id: "WHYPE", label: "WHYPE", kind: "erc20" as const, decimalsHint: "Read from the token when a wallet is on testnet." },
-  { id: "HYPE", label: "HYPE", kind: "native" as const, decimalsHint: "Native gas. The experimental pool does not accept it." },
-  { id: "GOTHAM", label: "$GOTHAM", kind: "unissued" as const, decimalsHint: "No contract has been issued." },
+  { id: "USDC", label: "USDC", kind: "erc20" as const, decimalsHint: "Public testnet balance, when a wallet is connected." },
+  { id: "WHYPE", label: "WHYPE", kind: "erc20" as const, decimalsHint: "Public testnet balance, when a wallet is connected." },
+  { id: "HYPE", label: "HYPE", kind: "native" as const, decimalsHint: "Unavailable for shielding." },
 ];
 
 export function Overview() {
@@ -23,11 +21,8 @@ export function Overview() {
     <div className="console-page">
       <header className="console-head">
         <p className="kicker">Overview</p>
-        <h1>Public position, and nothing shielded.</h1>
-        <p>
-          Shielded balances are unavailable because no pool is deployed.{" "}
-          <Link href="/docs/threat-model">Read the threat model</Link> before expecting privacy from this screen.
-        </p>
+        <h1>Public position.</h1>
+        <p>Demo only. A connected wallet can show a public balance. Shielded balances are unavailable.</p>
       </header>
 
       <section className="console-grid">
@@ -110,7 +105,7 @@ export function Overview() {
               ))}
               <div>
                 <dt>Shielded</dt>
-                <dd>Unavailable. No shielded pool is deployed.</dd>
+                <dd>Unavailable</dd>
               </div>
             </dl>
           ) : (
@@ -141,7 +136,7 @@ export function Overview() {
       )}
 
       <section className="console-card">
-        <h2>Proposed assets</h2>
+        <h2>Assets</h2>
         <div className="table-scroll">
           <table>
             <thead>
@@ -155,19 +150,14 @@ export function Overview() {
               {testnetTokens.map((token) => (
                 <tr key={token.symbol}>
                   <td>{token.symbol}</td>
-                  <td>Canonical testnet token. Not integrated.</td>
+                  <td>Demo only</td>
                   <td className="break">{token.address}</td>
                 </tr>
               ))}
               <tr>
                 <td>HYPE</td>
-                <td>Native gas. No shielding path.</td>
-                <td>None. It is not an ERC-20.</td>
-              </tr>
-              <tr>
-                <td>$GOTHAM</td>
-                <td>Not issued.</td>
-                <td>No address.</td>
+                <td>Unavailable</td>
+                <td>Native gas.</td>
               </tr>
             </tbody>
           </table>
@@ -281,9 +271,7 @@ function FlowView({
       showDestination ? `Destination: ${extra.trim()}. This address would be public.` : "",
       showRecipient ? `Recipient identifier: ${extra.trim()}. Gotham has no identifier format yet, so this cannot be paid.` : "",
       balance ? `Public balance currently shown: ${balance}.` : "No public balance is attached to this preview.",
-      "A real deposit would publish the depositor, the token, and the amount. It would not publish a note secret, because the contract has no field for one.",
-      "No approval was requested. No proof was generated. No transaction was created.",
-      protocolStatus.message,
+      "Demo only. No transaction was created.",
     ].filter(Boolean);
     setReview(lines);
   }
@@ -322,7 +310,7 @@ function FlowView({
             <input id={extraId} autoComplete="off" value={extra} onChange={(event) => setExtra(event.target.value)} placeholder="Not defined yet" />
           </label>
         ) : null}
-        <p className="muted">{selected.kind === "unissued" ? "This asset cannot be shielded. It has not been issued." : selected.decimalsHint}</p>
+        <p className="muted">{selected.decimalsHint}</p>
         {balance ? <p className="muted">Public balance: {balance}</p> : null}
         {error ? <p role="alert">{error}</p> : null}
         <button type="submit" className="btn btn-solid">
@@ -448,8 +436,8 @@ export function SettingsView() {
         {message ? <p role="status">{message}</p> : null}
       </section>
       <section className="console-card">
-        <h2>Not implemented</h2>
-        <p>Viewing keys and recovery are not in this preview. They need a design of their own before anyone is asked to rely on them.</p>
+        <h2>Not in this demo</h2>
+        <p>Viewing keys and recovery are unavailable here.</p>
         <ul className="link-list">
           <li>
             <Link href="/docs/privacy-model">Privacy model</Link>

@@ -39,20 +39,19 @@ export function Hero() {
         <div className="hero-scrim" aria-hidden="true" />
         <div className="hero-frame">
           <div className="hero-copy">
-            <p className="hero-status">Protocol in development</p>
             <p className="motto">Privacy is power.</p>
             <h1 id="hero-title" className="hero-title">
               Your finances are your business.
             </h1>
             <p className="hero-line">
-              Financial privacy for Elysium. Gotham is building a way to shield assets and transfer value with greater
+              Financial privacy for Elysium. Built around shielding assets and transferring value with greater
               confidentiality.
             </p>
             <div className="hero-actions">
               <a className="btn btn-solid" href="#experience">
                 Explore Gotham
               </a>
-              <a className="btn btn-line" href="#ecosystem">
+              <a className="btn btn-line" href="#infrastructure">
                 View the Protocol
               </a>
             </div>

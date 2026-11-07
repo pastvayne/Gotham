@@ -26,7 +26,7 @@ const displayItalic = Instrument_Serif({
 });
 
 const description =
-  "Financial privacy for Elysium. Gotham is building a way to shield assets and transfer value with greater confidentiality.";
+  "Financial privacy for Elysium. Built around shielding assets and transferring value with greater confidentiality.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(brand.url),

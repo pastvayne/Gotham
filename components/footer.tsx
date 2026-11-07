@@ -39,16 +39,12 @@ export function Footer() {
         </nav>
         <div className="footer-notice">
           <p className="footer-head">Notice</p>
-          <p>
-            Gotham is an independent design for a privacy protocol on Elysium. It is not deployed, not audited, and not a
-            product of Kinetiq, Hyperliquid, or Ascend.
-          </p>
-          <p>Nothing here is financial advice, a yield, or a promise that activity can be made untraceable.</p>
+          <p>Gotham is an independent privacy protocol for Elysium. It is not a product of Kinetiq, Hyperliquid, or Ascend.</p>
         </div>
       </div>
       <div className="footer-base">
         <p>© 2026 Gotham</p>
-        <p>Not deployed · No audited contracts · trygotham.tech</p>
+        <p>trygotham.tech</p>
       </div>
     </footer>
   );

@@ -21,7 +21,7 @@ export function ConsoleShell({ children }: { children: ReactNode }) {
   return (
     <WalletProvider>
       <div className="console">
-        <p className="console-banner">Preview. Gotham is not deployed. This console cannot sign or broadcast a transaction.</p>
+        <p className="console-banner">Demo only. This app cannot sign or broadcast a transaction.</p>
         <div className="console-body">
           <nav className="console-nav" aria-label="Application">
             <Link href="/" className="console-brand" aria-label="Back to the Gotham site">

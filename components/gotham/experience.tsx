@@ -37,7 +37,7 @@ export function Experience() {
       <div className="demo-sheet">
         <div className="demo-head">
           <div>
-            <p className="chapter-index">02</p>
+            <p className="chapter-index">03</p>
             <h2 className="chapter-title">What the ledger shows.</h2>
           </div>
           <div className="demo-switch" role="tablist" aria-label="How the payment is recorded">

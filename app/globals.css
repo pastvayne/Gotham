@@ -646,6 +646,18 @@ html[data-open="skip"] .hero-status {
   margin: 1.8rem 0 0;
 }
 
+.sequence.steps {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.sequence.steps h3 {
+  min-height: 0;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 2vw, 2.4rem);
+  font-weight: 400;
+}
+
 .sequence {
   display: grid;
   grid-template-columns: 1.35fr 1fr 1fr 1fr;
