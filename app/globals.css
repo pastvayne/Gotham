@@ -285,33 +285,37 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 62% 58%;
-  filter: saturate(0.72) contrast(1.08) brightness(0.78);
-  transform: scale(1.06);
-  animation: plate-drift 22s var(--ease-out) infinite alternate;
+  object-position: 72% 74%;
+  filter: saturate(0.84) contrast(1.12) brightness(1);
+  transform: scale(1.2);
+  animation: plate-drift 36s ease-in-out infinite alternate;
+}
+
+.hero-glow {
+  position: absolute;
+  inset: -8%;
+  background: radial-gradient(ellipse 34% 48% at 73% 54%, rgb(186 214 232 / 0.28), transparent 72%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: light-shift 20s ease-in-out infinite alternate;
 }
 
 .hero-scrim {
   background:
-    linear-gradient(90deg, rgb(6 16 24 / 0.92) 0%, rgb(6 16 24 / 0.72) 34%, rgb(6 16 24 / 0.18) 68%),
-    linear-gradient(to top, #081522 0%, rgb(8 21 34 / 0.55) 22%, transparent 48%),
-    linear-gradient(to bottom, rgb(6 16 24 / 0.45), transparent 16%);
+    linear-gradient(90deg, rgb(6 16 24 / 0.86) 0%, rgb(6 16 24 / 0.46) 24%, rgb(6 16 24 / 0.08) 46%, transparent 62%),
+    linear-gradient(to top, #081522 0%, rgb(8 21 34 / 0.22) 14%, transparent 32%),
+    linear-gradient(to bottom, rgb(6 16 24 / 0.38), transparent 16%);
 }
 
 .hero-frame {
   position: relative;
   z-index: 2;
-  display: grid;
-  grid-template-columns: minmax(26rem, 0.82fr) minmax(24rem, 1.08fr);
-  align-items: center;
-  gap: clamp(2.5rem, 4vw, 5rem);
   height: 100%;
-  padding: calc(var(--header-h) + 1rem) max(3.5rem, calc((100% - 100rem) / 2)) 2.5rem;
+  padding: clamp(8.5rem, 20vh, 14rem) max(3.5rem, calc((100% - 96rem) / 2)) 4rem;
 }
 
 .hero-copy {
-  width: min(40rem, 100%);
-  padding-bottom: 0.35rem;
+  width: min(42rem, 48vw);
 }
 
 .hero-status {
@@ -339,76 +343,13 @@ a {
   line-height: 0.96;
 }
 
-.hero-flow {
-  justify-self: end;
-  width: min(32rem, 100%);
-  padding: 1.6rem 1.6rem 1.3rem;
-  background: rgb(8 21 34 / 0.92);
-  border: 1px solid rgb(175 203 226 / 0.28);
-}
-
-.hero-flow-label,
-.hero-flow-note {
-  margin: 0;
-  color: var(--accent);
-  font-size: 0.86rem;
-}
-
-.hero-flow ol {
-  position: relative;
-  display: grid;
-  margin: 1rem 0 0.9rem;
-  padding: 0 0 0 1.35rem;
-  list-style: none;
-}
-
-.hero-flow ol::before {
-  content: "";
-  position: absolute;
-  top: 0.55rem;
-  bottom: 0.55rem;
-  left: 0.28rem;
-  width: 1px;
-  background: rgb(175 203 226 / 0.45);
-}
-
-.hero-flow li {
-  position: relative;
-  padding: 0.78rem 0;
-}
-
-.hero-flow li::before {
-  content: "";
-  position: absolute;
-  left: -1.22rem;
-  top: 0.95rem;
-  width: 0.45rem;
-  height: 0.45rem;
-  border: 1px solid var(--accent);
-  border-radius: 50%;
-  background: #081522;
-}
-
-.hero-flow strong {
-  display: block;
-  font-size: 1.02rem;
-  font-weight: 500;
-}
-
-.hero-flow li span {
-  display: block;
-  margin-top: 0.15rem;
-  color: var(--muted);
-  font-size: 0.92rem;
-  line-height: 1.4;
-}
-
 .hero-line {
-  max-width: 36rem;
-  margin: 1.15rem 0 0;
-  color: #d5e3ee;
-  font-size: 1.2rem;
-  line-height: 1.5;
+  max-width: 32rem;
+  margin: 1.25rem 0 0;
+  color: #e7f1f8;
+  font-size: 1.28rem;
+  font-weight: 450;
+  line-height: 1.45;
 }
 
 .hero-actions {
@@ -440,7 +381,6 @@ html[data-open="play"] .hero-plate {
   animation: reveal 1.6s var(--ease-out) forwards;
 }
 
-html[data-open="play"] .hero-flow,
 html[data-open="play"] .motto,
 html[data-open="play"] .hero-title,
 html[data-open="play"] .hero-line,
@@ -451,13 +391,11 @@ html[data-open="play"] .hero-status {
 }
 
 html[data-open="play"] .hero-status { animation-delay: 0.85s; }
-html[data-open="play"] .hero-flow { animation-delay: 1.05s; }
-html[data-open="play"] .motto { animation-delay: 1.15s; }
+html[data-open="play"] .motto { animation-delay: 1.05s; }
 html[data-open="play"] .hero-title { animation-delay: 1.3s; }
 html[data-open="play"] .hero-line { animation-delay: 1.55s; }
 html[data-open="play"] .hero-actions { animation-delay: 1.75s; }
 
-html[data-open="skip"] .hero-flow,
 html[data-open="skip"] .motto,
 html[data-open="skip"] .hero-title,
 html[data-open="skip"] .hero-line,
@@ -673,8 +611,13 @@ html[data-open="skip"] .hero-status {
 }
 
 @keyframes plate-drift {
-  from { transform: scale(1.06) translate3d(0, 0, 0); }
-  to { transform: scale(1.1) translate3d(-1.2%, -1%, 0); }
+  from { transform: scale(1.2) translate3d(0.5%, 0, 0); }
+  to { transform: scale(1.24) translate3d(-1.4%, -0.6%, 0); }
+}
+
+@keyframes light-shift {
+  from { opacity: 0.45; transform: translate3d(0, 0, 0); }
+  to { opacity: 0.85; transform: translate3d(-1.2%, -0.8%, 0); }
 }
 
 @keyframes draw {
@@ -1438,7 +1381,6 @@ th {
   .hero-plate img,
   .flow-path,
   html[data-open="play"] .hero-plate,
-  html[data-open="play"] .hero-flow,
   html[data-open="play"] .motto,
   html[data-open="play"] .hero-title,
   html[data-open="play"] .hero-line,
@@ -1446,6 +1388,16 @@ th {
   html[data-open="play"] .hero-status {
     animation: none;
     opacity: 1;
+    transform: none;
+  }
+
+  .hero-plate img {
+    transform: scale(1.2);
+  }
+
+  .hero-glow {
+    animation: none;
+    opacity: 0.75;
     transform: none;
   }
 }

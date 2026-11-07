@@ -80,7 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "try{var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;var seen=sessionStorage.getItem('gotham-open')==='1';document.documentElement.dataset.open=(!reduce&&!seen)?'play':'skip';}catch(e){document.documentElement.dataset.open='skip';}",
+              "try{var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;var seen=sessionStorage.getItem('gotham-open')==='1';var robot=navigator.webdriver;document.documentElement.dataset.open=(!reduce&&!seen&&!robot)?'play':'skip';}catch(e){document.documentElement.dataset.open='skip';}",
           }}
         />
         <link rel="preload" as="image" href="/gotham/city-wide.jpg" fetchPriority="high" />

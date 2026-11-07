@@ -1,0 +1,16 @@
+---
+description: Publish ordinary Gotham website updates to production and keep a restore point
+alwaysApply: true
+---
+
+# Production deploy
+
+Gotham production is https://trygotham.tech. Localhost is only for checking the work.
+
+Before a website change, tag the current commit `restore/gotham-YYYY-MM-DD-<short-name>`. After the change passes lint, `tsc --noEmit`, and `npm run build`, commit it, then deploy:
+
+`npx vercel deploy --prod --yes --project gotham --scope ahmedsiddiqui123456-1975s-projects --build-env NEXT_PUBLIC_SITE_URL=https://trygotham.tech`
+
+Verify the live domain before calling the task done. Do not push this repo to `origin` (that remote is the Summit project). Do not deploy contracts, payments, auth, or destructive migrations without a separate request.
+
+"Undo the last change" means revert the latest website commit, redeploy, and verify the previous design on https://trygotham.tech.

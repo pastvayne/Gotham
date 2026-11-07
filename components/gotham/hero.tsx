@@ -34,6 +34,7 @@ export function Hero() {
             height={720}
             fetchPriority="high"
           />
+          <div className="hero-glow" aria-hidden="true" />
         </div>
         <div className="hero-scrim" aria-hidden="true" />
         <div className="hero-frame">
@@ -56,32 +57,6 @@ export function Hero() {
               </a>
             </div>
           </div>
-          <aside className="hero-flow" aria-label="Proposed Gotham flow">
-            <p className="hero-flow-label">How a payment would move</p>
-            <ol>
-              <li>
-                <strong>Public wallet</strong>
-                <span>Value starts on an Elysium address.</span>
-              </li>
-              <li>
-                <strong>Shield</strong>
-                <span>A deposit enters the pool. That deposit stays public.</span>
-              </li>
-              <li>
-                <strong>Private transfer</strong>
-                <span>The link inside the pool is not published.</span>
-              </li>
-              <li>
-                <strong>Unshield</strong>
-                <span>A withdrawal returns value to the ledger.</span>
-              </li>
-              <li>
-                <strong>Destination wallet</strong>
-                <span>The receiving address is visible again.</span>
-              </li>
-            </ol>
-            <p className="hero-flow-note">Concept. The pool is not deployed, and this does not move funds.</p>
-          </aside>
         </div>
         <button type="button" className="open-skip">
           Skip
