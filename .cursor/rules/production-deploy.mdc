@@ -7,10 +7,12 @@ alwaysApply: true
 
 Gotham production is https://trygotham.tech. Localhost is only for checking the work.
 
-The Git remote is `origin` (`pastvayne/summit`). Gotham commits stay on the `gotham` branch. Before a website change, tag the current commit `restore/gotham-YYYY-MM-DD-<short-name>`. After lint, `tsc --noEmit`, and `npm run build`, commit, push with `git push -u origin gotham`, then deploy:
+The Gotham remote is `gotham` (`https://github.com/pastvayne/Gotham.git`). Work on `gotham-work`, which tracks `gotham/main`. Do not push to `origin`; that remote is the Summit repository.
+
+Before a website change, tag the current commit `restore/gotham-YYYY-MM-DD-<short-name>`. After lint, `tsc --noEmit`, and `npm run build`, commit, push with `git push gotham HEAD:main`, then deploy if the Git integration did not already publish it:
 
 `npx vercel deploy --prod --yes --project gotham --scope ahmedsiddiqui123456-1975s-projects --build-env NEXT_PUBLIC_SITE_URL=https://trygotham.tech`
 
-Never push `summit-kntq` or force-push. Do not deploy contracts, payments, auth, or destructive migrations without a separate request.
+Do not deploy contracts, payments, auth, or destructive migrations without a separate request.
 
-"Undo the last change" means revert the latest website commit, push that revert, redeploy, and verify https://trygotham.tech.
+"Undo the last change" means revert the latest website commit, push that revert to `gotham/main`, redeploy, and verify https://trygotham.tech.
